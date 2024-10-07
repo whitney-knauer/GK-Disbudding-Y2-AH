@@ -1,0 +1,11 @@
+---
+title: "New Analysis"
+author: "WAK"
+date: "today"
+format: html
+editor: visual
+---
+
+## New Analysis for Disbudding Y2
+
+This analysis is a new one for the disbudding Y2 data collected during summer of 2021. We enrolled 560 goat kids in a disbudding trial to investigate the effect of multi-modal pain management vs. a positive control.
