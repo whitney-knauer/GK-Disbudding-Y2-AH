@@ -60,6 +60,9 @@ new <- treatment |>
 wths <- read_csv ("data/Weight HS Final 04072022.csv")
 wths$week <- as.factor(wths$week)
 
+wths_noex <- wths |> 
+  filter(ExYN10 == 0)
+
 
 ```
 
@@ -131,7 +134,7 @@ new |>
 #| echo: false
 #| warning: false
 
-wths |> 
+wths_noex |> 
   group_by(Treatment, week) |> 
   summarize(
     wt = round(mean(weight, na.rm = TRUE), 2),
@@ -139,10 +142,49 @@ wths |>
   ) |> 
   ungroup()
 
-week0 <- wths |> 
+week0 <- wths_noex |> 
   filter (week == 0) 
 
 t.test(week0$weight~week0$Treatment)
 
 
 ```
+
+## Filtering data to just first 3 weeks for weight and hs data
+
+```{r}
+#| echo: false
+#| warning: false
+
+first3 <- 
+  wths_noex |> 
+  filter (week %in% c("0", "1", "2", "3"))
+
+#composite sick score by week
+first3 |> 
+  group_by(Treatment) |> 
+  count(composite)
+
+first3 |> 
+  group_by(Treatment, week) |> 
+  count(composite)
+
+#model
+
+model <- glmer(composite ~ Treatment +  Breed + (1 | Kidid) + (1|pen), family = "binomial", data = first3)
+summary(model)
+emmeans(model, specs = "Treatment", at = list(Treatment = c("Trt", "Con")), type="response")
+
+fixed_effects <- fixef(model)
+odds_ratios <- exp(fixed_effects)
+cat("Odds Ratios:\n")
+print(odds_ratios)
+type3_p_values <- Anova(model, type="III", test="Chisq")
+cat("\nType III p-values:\n")
+print(type3_p_values)
+
+
+
+```
+
+##  

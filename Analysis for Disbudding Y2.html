@@ -50,6 +50,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#new-analysis-for-disbudding-y2" id="toc-new-analysis-for-disbudding-y2" class="nav-link active" data-scroll-target="#new-analysis-for-disbudding-y2">New Analysis for Disbudding Y2</a></li>
   <li><a href="#descriptive-table-of-enrolled-goat-kids" id="toc-descriptive-table-of-enrolled-goat-kids" class="nav-link" data-scroll-target="#descriptive-table-of-enrolled-goat-kids">Descriptive Table of Enrolled Goat Kids</a></li>
   <li><a href="#more-enrollment-and-day-of-disbudding" id="toc-more-enrollment-and-day-of-disbudding" class="nav-link" data-scroll-target="#more-enrollment-and-day-of-disbudding">More enrollment and day of disbudding</a></li>
+  <li><a href="#filtering-data-to-just-first-3-weeks-for-weight-and-hs-data" id="toc-filtering-data-to-just-first-3-weeks-for-weight-and-hs-data" class="nav-link" data-scroll-target="#filtering-data-to-just-first-3-weeks-for-weight-and-hs-data">Filtering data to just first 3 weeks for weight and hs data</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
 </div>
@@ -93,12 +95,489 @@ ul.task-list li input[type="checkbox"] {
 <section id="descriptive-table-of-enrolled-goat-kids" class="level2">
 <h2 class="anchored" data-anchor-id="descriptive-table-of-enrolled-goat-kids">Descriptive Table of Enrolled Goat Kids</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 7
-  Treatment avgbwt sdbwt avgdia sddia avgewt sdewt
-  &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1 Con         3.38 0.508   7.80  2.69   4.31 0.999
-2 Trt         3.41 0.514   7.82  2.81   4.39 0.936</code></pre>
+<div class="cell-output-display">
+
+<div id="lljfddbgjg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lljfddbgjg table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#lljfddbgjg thead, #lljfddbgjg tbody, #lljfddbgjg tfoot, #lljfddbgjg tr, #lljfddbgjg td, #lljfddbgjg th {
+  border-style: none;
+}
+
+#lljfddbgjg p {
+  margin: 0;
+  padding: 0;
+}
+
+#lljfddbgjg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#lljfddbgjg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lljfddbgjg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lljfddbgjg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lljfddbgjg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lljfddbgjg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lljfddbgjg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lljfddbgjg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lljfddbgjg .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#lljfddbgjg .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#lljfddbgjg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lljfddbgjg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lljfddbgjg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lljfddbgjg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lljfddbgjg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lljfddbgjg .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#lljfddbgjg .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#lljfddbgjg .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#lljfddbgjg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lljfddbgjg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#lljfddbgjg .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lljfddbgjg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lljfddbgjg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lljfddbgjg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lljfddbgjg .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lljfddbgjg .gt_left {
+  text-align: left;
+}
+
+#lljfddbgjg .gt_center {
+  text-align: center;
+}
+
+#lljfddbgjg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lljfddbgjg .gt_font_normal {
+  font-weight: normal;
+}
+
+#lljfddbgjg .gt_font_bold {
+  font-weight: bold;
+}
+
+#lljfddbgjg .gt_font_italic {
+  font-style: italic;
+}
+
+#lljfddbgjg .gt_super {
+  font-size: 65%;
+}
+
+#lljfddbgjg .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#lljfddbgjg .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#lljfddbgjg .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#lljfddbgjg .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#lljfddbgjg .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#lljfddbgjg .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#lljfddbgjg .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#lljfddbgjg .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#lljfddbgjg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Treatment">Treatment</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="avgbwt">avgbwt</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="sdbwt">sdbwt</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="avgdia">avgdia</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="sddia">sddia</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="avgewt">avgewt</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="sdewt">sdewt</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Treatment" class="gt_row gt_left">Con</td>
+<td headers="avgbwt" class="gt_row gt_right">3.38</td>
+<td headers="sdbwt" class="gt_row gt_right">0.51</td>
+<td headers="avgdia" class="gt_row gt_right">7.80</td>
+<td headers="sddia" class="gt_row gt_right">2.69</td>
+<td headers="avgewt" class="gt_row gt_right">4.31</td>
+<td headers="sdewt" class="gt_row gt_right">1.00</td></tr>
+    <tr><td headers="Treatment" class="gt_row gt_left">Trt</td>
+<td headers="avgbwt" class="gt_row gt_right">3.41</td>
+<td headers="sdbwt" class="gt_row gt_right">0.51</td>
+<td headers="avgdia" class="gt_row gt_right">7.82</td>
+<td headers="sddia" class="gt_row gt_right">2.81</td>
+<td headers="avgewt" class="gt_row gt_right">4.39</td>
+<td headers="sdewt" class="gt_row gt_right">0.94</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
@@ -108,6 +587,54 @@ ul.task-list li input[type="checkbox"] {
 2 Con       D       251
 3 Trt       B         7
 4 Trt       D       249</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 
+   Cell Contents
+|-------------------------|
+|                       N |
+| Chi-square contribution |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  510 
+
+ 
+              | new$Sex 
+new$Treatment |         B |         D | Row Total | 
+--------------|-----------|-----------|-----------|
+          Con |         3 |       251 |       254 | 
+              |     0.787 |     0.016 |           | 
+              |     0.006 |     0.492 |           | 
+--------------|-----------|-----------|-----------|
+          Trt |         7 |       249 |       256 | 
+              |     0.781 |     0.016 |           | 
+              |     0.014 |     0.488 |           | 
+--------------|-----------|-----------|-----------|
+ Column Total |        10 |       500 |       510 | 
+--------------|-----------|-----------|-----------|
+
+ 
+Fisher's Exact Test for Count Data
+------------------------------------------------------------
+Sample estimate odds ratio:  0.4258138 
+
+Alternative hypothesis: true odds ratio is not equal to 1
+p =  0.3389153 
+95% confidence interval:  0.07026562 1.891298 
+
+Alternative hypothesis: true odds ratio is less than 1
+p =  0.1726744 
+95% confidence interval:  0 1.551156 
+
+Alternative hypothesis: true odds ratio is greater than 1
+p =  0.9456688 
+95% confidence interval:  0.0939903 Inf 
+
+
+ </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
@@ -124,10 +651,177 @@ ul.task-list li input[type="checkbox"] {
  9 Trt       S       117
 10 Trt       T        11</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 
+   Cell Contents
+|-------------------------|
+|                       N |
+| Chi-square contribution |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  510 
+
+ 
+              | new$Breed 
+new$Treatment |         A |         L |         N |         S |         T | Row Total | 
+--------------|-----------|-----------|-----------|-----------|-----------|-----------|
+          Con |        70 |         7 |        43 |       130 |         4 |       254 | 
+              |     0.021 |     0.043 |     0.174 |     0.397 |     1.612 |           | 
+              |     0.137 |     0.014 |     0.084 |     0.255 |     0.008 |           | 
+--------------|-----------|-----------|-----------|-----------|-----------|-----------|
+          Trt |        73 |         6 |        49 |       117 |        11 |       256 | 
+              |     0.021 |     0.042 |     0.172 |     0.393 |     1.600 |           | 
+              |     0.143 |     0.012 |     0.096 |     0.229 |     0.022 |           | 
+--------------|-----------|-----------|-----------|-----------|-----------|-----------|
+ Column Total |       143 |        13 |        92 |       247 |        15 |       510 | 
+--------------|-----------|-----------|-----------|-----------|-----------|-----------|
+
+ 
+Fisher's Exact Test for Count Data
+------------------------------------------------------------
+Alternative hypothesis: two.sided
+p =  0.3492702 
+
+ </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  new$weight by new$Treatment
+t = -0.94667, df = 505.3, p-value = 0.3443
+alternative hypothesis: true difference in means between group Con and group Trt is not equal to 0
+95 percent confidence interval:
+ -0.24960723  0.08727948
+sample estimates:
+mean in group Con mean in group Trt 
+         4.311024          4.392188 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  new$weight
+W = 0.97983, p-value = 1.665e-06</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Analysis-for-Disbudding-Y2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  new$DIAenroll by new$Treatment
+t = -0.1025, df = 507.36, p-value = 0.9184
+alternative hypothesis: true difference in means between group Con and group Trt is not equal to 0
+95 percent confidence interval:
+ -0.5042845  0.4542722
+sample estimates:
+mean in group Con mean in group Trt 
+         7.799213          7.824219 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  new$DIAenroll
+W = 0.96038, p-value = 1.758e-10</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Analysis-for-Disbudding-Y2_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </section>
 <section id="more-enrollment-and-day-of-disbudding" class="level2">
 <h2 class="anchored" data-anchor-id="more-enrollment-and-day-of-disbudding">More enrollment and day of disbudding</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 4
+   Treatment week     wt  sdwt
+   &lt;chr&gt;     &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 Con       0      4.31  1   
+ 2 Con       1      5.55  1.07
+ 3 Con       2      6.32  1.26
+ 4 Con       3      7.16  1.53
+ 5 Con       4      8.42  1.86
+ 6 Con       5      9.48  1.81
+ 7 Con       6     10.8   1.93
+ 8 Trt       0      4.39  0.94
+ 9 Trt       1      5.62  1.06
+10 Trt       2      6.37  1.24
+11 Trt       3      7.27  1.4 
+12 Trt       4      8.6   1.77
+13 Trt       5      9.59  1.9 
+14 Trt       6     10.9   1.89</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  week0$weight by week0$Treatment
+t = -0.94667, df = 505.3, p-value = 0.3443
+alternative hypothesis: true difference in means between group Con and group Trt is not equal to 0
+95 percent confidence interval:
+ -0.24960723  0.08727948
+sample estimates:
+mean in group Con mean in group Trt 
+         4.311024          4.392188 </code></pre>
+</div>
+</div>
+</section>
+<section id="filtering-data-to-just-first-3-weeks-for-weight-and-hs-data" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-data-to-just-first-3-weeks-for-weight-and-hs-data">Filtering data to just first 3 weeks for weight and hs data</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   Treatment [2]
+  Treatment composite     n
+  &lt;chr&gt;         &lt;dbl&gt; &lt;int&gt;
+1 Con               0   729
+2 Con               1   264
+3 Con              NA    20
+4 Trt               0   744
+5 Trt               1   263
+6 Trt              NA    14</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 4
+# Groups:   Treatment, week [8]
+   Treatment week  composite     n
+   &lt;chr&gt;     &lt;fct&gt;     &lt;dbl&gt; &lt;int&gt;
+ 1 Con       0             0   254
+ 2 Con       1             0   166
+ 3 Con       1             1    82
+ 4 Con       1            NA     6
+ 5 Con       2             0   152
+ 6 Con       2             1    95
+ 7 Con       2            NA     6
+ 8 Con       3             0   157
+ 9 Con       3             1    87
+10 Con       3            NA     8
+11 Trt       0             0   256
+12 Trt       1             0   176
+13 Trt       1             1    79
+14 Trt       2             0   160
+15 Trt       2             1    91
+16 Trt       2            NA     4
+17 Trt       3             0   152
+18 Trt       3             1    93
+19 Trt       3            NA    10</code></pre>
+</div>
+</div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 </section>
 
 </main>
