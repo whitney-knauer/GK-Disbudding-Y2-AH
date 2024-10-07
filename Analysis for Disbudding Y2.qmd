@@ -2,7 +2,10 @@
 title: "New Analysis"
 author: "WAK"
 date: "today"
-format: html
+format:
+  html: 
+    toc: true
+    toc-location: left
 editor: visual
 ---
 
@@ -36,6 +39,70 @@ library(gridGraphics)
 library(multcomp)
 ```
 
+```{r}
+#| echo: false
+#| include: false
+#| warning: false
+#| 
+#import the data
+
+treatment <- read_csv ("data/ENROLL FINAL 04062022.csv")
+
+#create data set ("new") excluding all exclusions 
+
+new <- treatment |> 
+  filter (ExYN10 == 0)
+
+
+wths <- read_csv ("data/Weight HS Final 04072022.csv")
+wths$week <- as.factor(wths$week)
+
+
+```
+
 ## New Analysis for Disbudding Y2
 
 This analysis is a new one for the disbudding Y2 data collected during summer of 2021. We enrolled 560 goat kids in a disbudding trial to investigate the effect of multi-modal pain management vs. a positive control.
+
+## Descriptive Table of Enrolled Goat Kids
+
+```{r}
+#| echo: false
+
+
+new |> 
+  group_by(Treatment) |> 
+  summarize(
+    avgbwt = mean(bwtkg, na.rm = TRUE),
+    sdbwt = sd(bwtkg, na.rm = TRUE), 
+    avgdia = mean(DIAenroll),
+    sddia = sd(DIAenroll),
+    avgewt = mean(weight), 
+    sdewt = sd(weight)) |> 
+  ungroup()
+  
+
+new |> 
+  group_by (Treatment, Sex) |> 
+  count() |> 
+  ungroup()
+
+new |> 
+  group_by(Treatment, Breed) |> 
+  count() |> 
+  ungroup()
+
+
+
+
+```
+
+## More enrollment and day of disbudding
+
+```{r}
+#| echo: false
+
+  
+
+
+```
