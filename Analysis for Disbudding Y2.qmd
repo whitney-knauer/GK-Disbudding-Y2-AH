@@ -37,6 +37,9 @@ library(car)
 library(cowplot)       
 library(gridGraphics)  
 library(multcomp)
+library (broom)
+library(DT)
+library(gt)
 ```
 
 ```{r}
@@ -70,30 +73,55 @@ This analysis is a new one for the disbudding Y2 data collected during summer of
 #| echo: false
 
 
-new |> 
+table1 <- new |> 
   group_by(Treatment) |> 
   summarize(
-    avgbwt = mean(bwtkg, na.rm = TRUE),
-    sdbwt = sd(bwtkg, na.rm = TRUE), 
-    avgdia = mean(DIAenroll),
-    sddia = sd(DIAenroll),
-    avgewt = mean(weight), 
-    sdewt = sd(weight)) |> 
+    avgbwt = round(mean(bwtkg, na.rm = TRUE), 2),
+    sdbwt = round(sd(bwtkg, na.rm = TRUE), 2), 
+    avgdia = round(mean(DIAenroll, na.rm = TRUE), 2),
+    sddia = round(sd(DIAenroll, na.rm = TRUE), 2),
+    avgewt = round(mean(weight, na.rm = TRUE), 2), 
+    sdewt = round(sd(weight, na.rm = TRUE), 2)
+  ) |> 
   ungroup()
   
+gt(table1) 
 
 new |> 
   group_by (Treatment, Sex) |> 
   count() |> 
   ungroup()
 
+CrossTable(new$Treatment,  new$Sex, prop.r=FALSE, prop.c = FALSE, fisher=TRUE)
+
+
 new |> 
   group_by(Treatment, Breed) |> 
   count() |> 
   ungroup()
 
+CrossTable(new$Treatment,  new$Breed, prop.r=FALSE, prop.c = FALSE, fisher=TRUE)
 
 
+t.test(new$weight~new$Treatment)
+shapiro.test(new$weight)
+
+new |> 
+  ggplot (mapping = aes(x=weight))+
+          geom_histogram()
+        
+
+
+t.test(new$DIAenroll~new$Treatment)
+shapiro.test(new$DIAenroll)
+
+new |> 
+  ggplot (mapping = aes(x=DIAenroll))+
+          geom_histogram()
+        
+
+  
+  
 
 ```
 
@@ -101,8 +129,20 @@ new |>
 
 ```{r}
 #| echo: false
+#| warning: false
 
-  
+wths |> 
+  group_by(Treatment, week) |> 
+  summarize(
+    wt = round(mean(weight, na.rm = TRUE), 2),
+    sdwt = round(sd(weight, na.rm = TRUE), 2), 
+  ) |> 
+  ungroup()
+
+week0 <- wths |> 
+  filter (week == 0) 
+
+t.test(week0$weight~week0$Treatment)
 
 
 ```
