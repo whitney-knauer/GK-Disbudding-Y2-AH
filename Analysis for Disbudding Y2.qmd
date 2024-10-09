@@ -40,13 +40,15 @@ library(multcomp)
 library (broom)
 library(DT)
 library(gt)
+library(survival)
+library(survminer)
 ```
 
 ```{r}
 #| echo: false
 #| include: false
 #| warning: false
-#| 
+
 #import the data
 
 treatment <- read_csv ("data/ENROLL FINAL 04062022.csv")
@@ -150,6 +152,43 @@ t.test(week0$weight~week0$Treatment)
 
 ```
 
+## Descriptive Stuff for Health Scores for first three weeks
+
+```{r}
+#| echo: false
+#| warning: false
+
+first3 |> 
+  group_by(Treatment) |> 
+  count(Mentation) 
+
+first3 |> 
+  group_by(Treatment) |> 
+  count(bodyposture)
+
+first3 |> 
+  group_by(Treatment) |> 
+  count(resp)
+
+first3 |> 
+  group_by(Treatment) |> 
+  count(bellyfill)
+
+first3 |> 
+  group_by(Treatment) |> 
+  count(fecal)
+
+first3 |> 
+  group_by(Treatment) |> 
+  count(rectal_temp)
+
+first3 |> 
+  group_by(Treatment) |> 
+  count(Total_HS)
+  
+
+```
+
 ## Filtering data to just first 3 weeks for weight and hs data
 
 ```{r}
@@ -169,7 +208,7 @@ first3 |>
   group_by(Treatment, week) |> 
   count(composite)
 
-#model
+#model for first three weeks
 
 model <- glmer(composite ~ Treatment +  Breed + (1 | Kidid) + (1|pen), family = "binomial", data = first3)
 summary(model)
@@ -183,8 +222,171 @@ type3_p_values <- Anova(model, type="III", test="Chisq")
 cat("\nType III p-values:\n")
 print(type3_p_values)
 
+#model for six weeks
+
+wths_noex |> 
+  group_by(Treatment) |> 
+  count(composite)
+
+model <- glmer(composite ~ Treatment +  Breed + (1 | Kidid) + (1|pen), family = "binomial", data = wths_noex)
+summary(model)
+emmeans(model, specs = "Treatment", at = list(Treatment = c("Trt", "Con")), type="response")
+
+fixed_effects <- fixef(model)
+odds_ratios <- exp(fixed_effects)
+cat("Odds Ratios:\n")
+print(odds_ratios)
+type3_p_values <- Anova(model, type="III", test="Chisq")
+cat("\nType III p-values:\n")
+print(type3_p_values)
+
+
+
+
 
 
 ```
 
-##  
+## Health Treatment Information
+
+```{r}
+#| echo: false
+#| warning: false
+
+new |> 
+  group_by (Treatment) |> 
+  count(trt0yn10)
+
+new |> 
+  group_by(Treatment) |> 
+  count(trt1yn10)
+
+new |> 
+  group_by (Treatment) |> 
+  count(Dead_YN10)
+
+
+```
+
+## Kaplan-Meyer Curves for all data (6weeks) for Treatment post disbudding and Dead post disbudding
+
+```{r}
+#| echo: false
+#| warning: false
+
+
+#Univariable model for Treatment Survival
+km_fit <- survfit(Surv(time = new$DFDT1, event = new$trt1yn10) ~ Treatment, data = new)
+
+
+summary(km_fit)
+plot(km_fit, 
+      xlab = "Time (days)", 
+     ylab = "Survival Probability", 
+     main = "Kaplan-Meier Survival Curve", 
+     col = c("blue", "red"), 
+     mark.time = FALSE)
+legend("topright", legend = c("Group 1", "Group 2"), col = c("blue", "red"), lty = 1:2)
+km_fit$median
+print(km_fit, print.rmean = TRUE)
+
+#wilcoxon test will give more weight to early events vs. later events
+
+wilcoxon_test<-survdiff(Surv(time = new$DFDT1, event = new$trt1yn10) ~ Treatment, data = new, rho = 1)
+
+
+
+
+#Univariable model for Regular Survival
+km_fit <- survfit(Surv(time = new$DFDDie, event = new$trt1yn10) ~ Treatment, data = new)
+
+
+summary(km_fit)
+plot(km_fit, 
+      xlab = "Time (days)", 
+     ylab = "Survival Probability", 
+     main = "Kaplan-Meier Survival Curve", 
+     col = c("blue", "red"), 
+     mark.time = FALSE)
+legend("bottomleft", legend = c("Group 1", "Group 2"), col = c("blue", "red"), lty = 1:2)
+km_fit$median
+print(km_fit, print.rmean = TRUE)
+
+#wilcoxon test will give more weight to early events vs. later events
+
+wilcoxon_test<-survdiff(Surv(time = new$DFDDie, event = new$trt1yn10) ~ Treatment, data = new, rho = 1)
+
+wilcoxon_test
+
+
+
+
+
+#Univariable model for Diarrhea
+km_fit <- survfit(Surv(time = new$DFDT1, event = new$Trt1diar) ~ Treatment, data = new)
+
+
+summary(km_fit)
+plot(km_fit, 
+      xlab = "Time (days)", 
+     ylab = "Survival Probability", 
+     main = "Kaplan-Meier Survival Curve", 
+     col = c("blue", "red"), 
+     mark.time = FALSE)
+legend("bottomleft", legend = c("Group 1", "Group 2"), col = c("blue", "red"), lty = 1:2)
+km_fit$median
+print(km_fit, print.rmean = TRUE)
+
+#wilcoxon test will give more weight to early events vs. later events
+
+wilcoxon_test<-survdiff(Surv(time = new$DFDT1, event = new$Trt1diar) ~ Treatment, data = new, rho = 1)
+
+wilcoxon_test
+
+
+
+
+#Univariable Models for Pneumonia Treatment 
+
+km_fit <- survfit(Surv(time = new$DFDT1, event = new$Trt1pneu) ~ Treatment, data = new)
+
+
+summary(km_fit)
+plot(km_fit, 
+      xlab = "Time (days)", 
+     ylab = "Survival Probability", 
+     main = "Kaplan-Meier Survival Curve", 
+     col = c("blue", "red"), 
+     mark.time = FALSE)
+legend("bottomleft", legend = c("Group 1", "Group 2"), col = c("blue", "red"), lty = 1:2)
+km_fit$median
+print(km_fit, print.rmean = TRUE)
+
+#wilcoxon test will give more weight to early events vs. later events
+
+wilcoxon_test<-survdiff(Surv(time = new$DFDT1, event = new$Trt1pneu) ~ Treatment, data = new, rho = 1)
+
+wilcoxon_test
+
+
+
+
+```
+
+## Playing around with KM formatting
+
+```{r}
+
+km_fit <- survfit(Surv(time = new$DFDT1, event = new$Trt1pneu) ~ Treatment, data = new)
+ggsurvplot(km_fit,
+           data = new,         # The dataset
+           conf.int = TRUE,     # Add shaded confidence intervals
+           conf.int.style = "ribbon",  # Style of the confidence intervals
+           palette = c("blue", "red"), # Customize color palette
+           xlab = "DFDT1",      # Custom X-axis label
+           ylab = "Survival Probability",  # Custom Y-axis label
+           legend.title = "Treatment",    # Custom legend title
+           legend.labs = c("Con", "Trt"), # Custom legend labels
+           pval = TRUE,         # Display p-value for log-rank test
+           risk.table = TRUE)   # Optionally add risk table below plot
+```
