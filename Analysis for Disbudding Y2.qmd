@@ -89,6 +89,18 @@ table1 <- new |>
     sdewt = round(sd(weight, na.rm = TRUE), 2)
   ) |> 
   ungroup()
+
+new |> 
+  group_by(Breed) |> 
+  summarize(
+    avgbwt = round(mean(weight, na.rm = TRUE), 2),
+    sdbwt = round(sd(weight, na.rm = TRUE), 2), 
+    avgdia = round(mean(DIAenroll, na.rm = TRUE), 2),
+    sddia = round(sd(DIAenroll, na.rm = TRUE), 2)) |> 
+  ungroup()
+
+
+
   
 gt(table1) 
 
